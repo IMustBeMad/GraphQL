@@ -14,8 +14,8 @@ public class GraphController {
     @Autowired
     private GraphService graphService;
 
-    @PostMapping(value = "graphQl")
-    public Map<String, Object> getAuthor(@RequestBody String query) {
+    @PostMapping(value = "/graphQl")
+    public Map<String, Object> processGraphQuery(@RequestBody String query) {
         return graphService.processQuery(query);
     }
 }

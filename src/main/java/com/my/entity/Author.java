@@ -23,4 +23,13 @@ public class Author {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Book> books;
+
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Author(Long id) {
+        this.id = id;
+    }
 }

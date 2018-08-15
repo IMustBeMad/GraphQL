@@ -24,4 +24,10 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private Author author;
+
+    public Book(BigDecimal price, String title, Author author) {
+        this.price = price;
+        this.title = title;
+        this.author = author;
+    }
 }
