@@ -3,7 +3,7 @@ package com.my.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -11,16 +11,17 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-public class Author {
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String firstName;
+    private String title;
 
-    private String lastName;
+    private BigDecimal price;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
-    private List<Book> books;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Author author;
 }
