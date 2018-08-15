@@ -1,6 +1,7 @@
 package com.my.entity;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
+@BatchSize(size = 20)
 public class Book {
 
     @Id
