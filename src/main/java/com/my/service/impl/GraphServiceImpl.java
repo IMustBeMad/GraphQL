@@ -1,6 +1,6 @@
 package com.my.service.impl;
 
-import com.my.service.GraphQlService;
+import com.my.service.GraphService;
 import graphql.ExecutionInput;
 import graphql.GraphQL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Map;
 
 @Service
-public class GraphQlServiceImpl implements GraphQlService {
+public class GraphServiceImpl implements GraphService {
 
     @Autowired
     private GraphQL graphQL;
