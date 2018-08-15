@@ -64,6 +64,19 @@
             <version>5.2.3</version>
         </dependency>
 
+      <dependency>
+        <groupId>io.leangen.graphql</groupId>
+        <artifactId>spqr</artifactId>
+        <version>0.9.7</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/io.leangen.graphql/graphql-spqr-spring-boot-starter -->
+      <dependency>
+        <groupId>io.leangen.graphql</groupId>
+        <artifactId>graphql-spqr-spring-boot-starter</artifactId>
+        <version>0.0.1</version>
+      </dependency>
+
+
     </dependencies>
 
     <build>
