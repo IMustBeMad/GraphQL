@@ -15,6 +15,12 @@ import java.math.BigDecimal;
 @BatchSize(size = 20)
 public class Book {
 
+    public Book(BigDecimal price, String title, Author author) {
+        this.title = title;
+        this.price = price;
+        this.author = author;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

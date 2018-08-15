@@ -1,7 +1,9 @@
 package com.my.service.graph;
 
 import com.my.entity.Author;
-import com.my.repository.AuthorRepository;
+import com.my.service.AuthorService;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +16,21 @@ import java.util.List;
 public class AuthorGraph {
 
     @Autowired
-    private AuthorRepository authorRepository;
+    private AuthorService authorService;
 
     @GraphQLQuery(name = "findAllAuthors")
     public List<Author> findAllAuthors() {
-        return authorRepository.findAll();
+        return authorService.getAll();
     }
 
     @GraphQLQuery(name = "countAuthors")
     public Long countAuthors() {
-        return authorRepository.count();
+        return authorService.getCount();
+    }
+
+    @GraphQLMutation(name = "addAuthor")
+    public Author addAuthor(@GraphQLArgument(name = "firstName") String firstName,
+                            @GraphQLArgument(name = "lastName") String lastName) {
+        return authorService.addAuthor(firstName, lastName);
     }
 }

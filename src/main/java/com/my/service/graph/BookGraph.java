@@ -1,12 +1,15 @@
 package com.my.service.graph;
 
 import com.my.entity.Book;
-import com.my.repository.BookRepository;
+import com.my.service.BookService;
+import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLMutation;
 import io.leangen.graphql.annotations.GraphQLQuery;
 import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -14,15 +17,22 @@ import java.util.List;
 public class BookGraph {
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
     @GraphQLQuery(name = "findAllBooks")
     public List<Book> findAllBooks() {
-        return bookRepository.findAll();
+        return bookService.getAll();
     }
 
     @GraphQLQuery(name = "countBooks")
     public Long countBooks() {
-        return bookRepository.count();
+        return bookService.getCount();
+    }
+
+    @GraphQLMutation(name = "addBook")
+    public Book addBook(@GraphQLArgument(name = "title") String title,
+                        @GraphQLArgument(name = "price") BigDecimal price,
+                        @GraphQLArgument(name = "authorId") Long authorId) {
+        return bookService.addBook(title, price, authorId);
     }
 }
