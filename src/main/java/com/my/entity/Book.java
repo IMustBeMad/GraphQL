@@ -31,5 +31,6 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
+    @BatchSize(size = 20)
     private Author author;
 }

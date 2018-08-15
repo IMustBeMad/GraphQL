@@ -12,6 +12,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
+@BatchSize(size = 20)
 public class Author {
 
     public Author(String firstName, String lastName) {
