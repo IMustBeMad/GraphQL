@@ -17,8 +17,15 @@ public class GraphServiceImpl implements GraphService {
 
     @Override
     @Transactional
-    public Map<String, Object> processQuery(String query) {
-        return graphQL.execute(ExecutionInput.newExecutionInput().query(query).build())
+    public Map<String, Object> processQuery(Map<String, Object> request) {
+        return graphQL.execute(getInput(request))
                       .toSpecification();
+    }
+
+    private ExecutionInput getInput(Map<String, Object> query) {
+        return ExecutionInput.newExecutionInput()
+                             .query((String) query.get("query"))
+                             .operationName((String) query.get("operationName"))
+                             .build();
     }
 }

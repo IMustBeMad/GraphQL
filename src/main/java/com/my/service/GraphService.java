@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface GraphService {
 
-    Map<String,Object> processQuery(String query);
+    Map<String,Object> processQuery(Map<String, Object> request);
 }
