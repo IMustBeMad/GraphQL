@@ -28,6 +28,11 @@ public class AuthorGraph {
         return authorService.getCount();
     }
 
+    @GraphQLQuery(name = "findAllAuthorsPaginated")
+    public List<Author> findAllAuthorsPaginated(@GraphQLArgument(name = "pageIndex") Integer pageIndex) {
+        return authorService.getAllPaginated(pageIndex);
+    }
+
     @GraphQLMutation(name = "addAuthor")
     public Author addAuthor(@GraphQLArgument(name = "firstName") String firstName,
                             @GraphQLArgument(name = "lastName") String lastName) {

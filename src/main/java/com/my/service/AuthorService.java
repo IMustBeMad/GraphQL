@@ -13,4 +13,6 @@ public interface AuthorService {
     Author addAuthor(String firstName, String lastName);
 
     void saveAll(List<Author> authors);
+
+    List<Author> getAllPaginated(Integer pageIndex);
 }

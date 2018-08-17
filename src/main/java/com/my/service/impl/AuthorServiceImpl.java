@@ -40,4 +40,9 @@ public class AuthorServiceImpl implements AuthorService {
     public void saveAll(List<Author> authors) {
         authorRepository.saveAll(authors);
     }
+
+    @Override
+    public List<Author> getAllPaginated(Integer pageIndex) {
+        return authorRepository.findAllPaginated(pageIndex);
+    }
 }
